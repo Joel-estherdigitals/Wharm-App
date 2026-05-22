@@ -1,0 +1,83 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+  html {
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    @apply bg-bg text-ink font-sans antialiased;
+    background-image: radial-gradient(
+        120% 60% at 100% 0%,
+        rgba(255, 184, 0, 0.06) 0%,
+        transparent 60%
+      ),
+      radial-gradient(120% 60% at 0% 0%, rgba(255, 69, 0, 0.05) 0%, transparent 55%);
+    background-attachment: fixed;
+  }
+  ::selection {
+    background: #ffd60a;
+    color: #1a0f00;
+  }
+}
+
+@layer components {
+  .label {
+    @apply font-mono text-[11px] font-semibold uppercase tracking-[0.14em];
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-4 py-2
+           text-sm font-semibold transition-all active:scale-[0.97]
+           disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-primary {
+    @apply btn bg-wham text-white shadow-[0_6px_20px_-6px_rgba(255,69,0,0.6)]
+           hover:bg-wham-mid hover:shadow-lift;
+  }
+  .btn-ghost {
+    @apply btn bg-card text-ink-soft border border-line hover:border-wham hover:text-wham;
+  }
+  .pill {
+    @apply inline-flex shrink-0 items-center gap-1.5 rounded-full border border-line
+           bg-card px-3.5 py-1.5 text-sm font-semibold text-ink-soft transition-all
+           hover:border-wham/60 hover:text-wham;
+  }
+  .pill-active {
+    @apply border-transparent bg-wham-pill text-white shadow-[0_4px_14px_-4px_rgba(255,69,0,0.6)] hover:text-white;
+  }
+}
+
+/* Quiet, on-brand scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #f0ddd0 transparent;
+}
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+*::-webkit-scrollbar-thumb {
+  background: #f0ddd0;
+  border-radius: 999px;
+  border: 3px solid transparent;
+  background-clip: content-box;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background: #e6c9b6;
+  background-clip: content-box;
+}
+
+/* Hide horizontal scrollbar on the category rail while keeping it scrollable */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
